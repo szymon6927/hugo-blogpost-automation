@@ -1,0 +1,71 @@
+[tool.poetry]
+name = "hugo-blogpost-automation"
+version = "0.1.0"
+description = ""
+authors = ["Szymon Miks <miks.szymon@gmail.com>"]
+readme = "README.md"
+
+
+[tool.poetry.dependencies]
+python = "^3.11"
+kink = "^0.6.6"
+
+[tool.poetry.group.dev.dependencies]
+black = "^23.1"
+flake8 = "^6.0"
+isort = "^5.12"
+mypy = "^1.0"
+pre-commit = "^3.0"
+pytest = "^7.2"
+pytest-cov = "^4.0"
+responses = "^0.23.1"
+toml-sort = "^0.22"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
+
+[tool.black]
+line-length = 120
+target-version = ["py311"]
+
+[tool.coverage.report]
+exclude_lines = [
+  "def __repr__",
+  "if 0:",
+  "if TYPE_CHECKING:",
+  "if __name__ == .__main__.:",
+  "nocov",
+  "pass",
+  "pragma: no cover",
+  "raise AssertionError",
+  "raise NotImplementedError"
+]
+fail_under = 80
+show_missing = true
+
+[tool.coverage.run]
+branch = true
+omit = [
+  "tests/*"
+]
+
+[tool.isort]
+combine_as_imports = "true"
+force_grid_wrap = 0
+include_trailing_comma = "true"
+known_first_party = "src"
+line_length = 120
+multi_line_output = 3
+
+[tool.mypy]
+disallow_untyped_defs = true
+follow_imports = "silent"
+ignore_missing_imports = true
+python_version = "3.9"
+warn_return_any = true
+warn_unused_configs = true
+
+[tool.pytest.ini_options]
+addopts = "-v --cov=src --cov-report term-missing --no-cov-on-fail"
+testpaths = ["tests"]
