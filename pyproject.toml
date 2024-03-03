@@ -9,6 +9,7 @@ readme = "README.md"
 [tool.poetry.dependencies]
 python = "^3.11"
 kink = "^0.6.6"
+requests = "^2.31.0"
 
 [tool.poetry.group.dev.dependencies]
 black = "^23.1"
